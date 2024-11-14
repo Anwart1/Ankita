@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Greeting with Music</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            overflow: hidden;
+        }
+        .page {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em; /* Increased font size for larger display */
+            color: #444;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .page.active {
+            display: flex;
+            opacity: 1;
+        }
+        .page1 { background-color: #e0f7fa; }
+        .page2 { background-color: #fff3e0; }
+        .page3 { background-color: #f1f8e9; }
+        .page4 { background-color: #fce4ec; }
+
+        .decoration {
+            font-size: 1.5em;
+            color: #ff6f61;
+            font-weight: bold;
+        }
+
+        /* Footer style for a small, bottom-right corner display */
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.7em;
+            color: #555;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="page active page1" id="page1">
+        <div>Today is <span class="decoration">15 November</span></div>
+        <div class="footer">- Created by Antarip</div>
+    </div>
+    <div class="page page2" id="page2">
+        <div>A very special day. 🤩</div>
+        <div class="footer">- Created by Antarip</div>
+    </div>
+    <div class="page page3" id="page3">
+        <div>Today is your birthday 🎂🎉</div>
+        <div class="footer">- Created by Antarip</div>
+    </div>
+    <div class="page page4" id="page4">
+        <div>Happy Birthday, <span class="decoration">Ankita</span> ❤️</div>
+        <div class="footer">- Created by Antarip</div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="Bmusic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+
+        function showNextPage() {
+            if (currentPage < pages.length - 1) {
+                pages[currentPage].classList.remove('active');
+                currentPage++;
+                pages[currentPage].classList.add('active');
+            }
+        }
+
+        // Automatically change pages every 3 seconds
+        setInterval(showNextPage, 3000); // Adjust the timing as needed
+    </script>
+</body>
+</html>
